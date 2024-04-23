@@ -1,0 +1,38 @@
+POST http://localhost:8080/cron
+Content-Type: application/json
+
+{
+   "_id":"6627fefebca796c2f00fa240",
+   "public_order_id":"6627fefedf7eef7f5a4c35cf",
+   "sequence":144,
+   "customer_wallet_address":"0x844179a977d3f10ff23097d1b9c62ac00ecff417",
+   "token_amount":123,
+   "order_wallet_address":"0x53cA8EE3Be2e17126c5a3c54984831254d50a1dd",
+   "order_status":"created",
+   "from_chain":"theta",
+   "to_chain":"ethereum",
+   "from_contract":{
+      "name":"Replay Token",
+      "symbol":"RPLAY",
+      "decimal":18,
+      "contract_address":"0x3da3d8cde7b12cd2cbb688e2655bcacd8946399d",
+      "chain":"theta"
+   },
+   "to_contract":{
+      "name":"Replay Token",
+      "symbol":"RPLAY",
+      "decimal":18,
+      "contract_address":"0x3da3d8cde7b12cd2cbb688e2655bcacd8946399d",
+      "chain":"ethereum"
+   },
+   "created_at":"2024-04-23T18:33:34.90743922Z",
+   "updated_at":"0001-01-01T00:00:00Z",
+   "prices":{
+      "theta_price":"2.431156314233",
+      "tfuel_price":"0.11142403001435",
+      "RPLAY_price":"0.024887330224465"
+   },
+   "eth_gas_price_usd":1.0201321369581344,
+   "eth_gas_price_in_replay_token":40.99001892759528,
+   "total_order_amount":163.9900189275953
+}
