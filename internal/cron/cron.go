@@ -20,7 +20,7 @@ func ProcessOrder(order model.Order) {
 
 	deadline := time.Now().Add(1 * time.Hour)
 
-	fmt.Printf("Cronjob started to wallet: %s", order.CustomerWalletAddress)
+	fmt.Printf("Cronjob started to wallet: %v", order.CustomerWalletAddress)
 
 	for time.Now().Before(deadline) {
 		if theta.CheckWalletChange(order.CustomerWalletAddress) {
