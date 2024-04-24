@@ -31,11 +31,13 @@ func CheckWalletChange(walletAddress string) bool {
 		return false
 	}
 
-	fmt.Println(result)
+	for key, value := range result {
+		fmt.Printf("%s: %v\n", key, value)
+	}
 
 	currentBalance, ok := result["balance"].(string)
 	if !ok {
-		fmt.Println("Balance not found: ", result)
+		fmt.Println("Balance not found: ")
 		return false
 	}
 

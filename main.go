@@ -50,6 +50,10 @@ func main() {
 		return c.JSON(http.StatusOK, response)
 	})
 
+	e.GET("/", func(c echo.Context) error {
+		return c.String(http.StatusOK, "Cron is running...")
+	})
+
 	port := os.Getenv("PORT")
 
 	go handleOrders()
