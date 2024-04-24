@@ -3,7 +3,6 @@ package model
 import (
 	"time"
 
-	"github.com/enrique/cron-bridge/internal/blockchain/theta"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
@@ -40,6 +39,12 @@ type Contract struct {
 	Chain           string `bson:"chain,omitempty" json:"chain,omitempty" validate:"required"`
 }
 
+type Price struct {
+	ThetaPrice string `json:"theta_price"`
+	TfuelPrice string `json:"tfuel_price"`
+	RplayPrice string `json:"RPLAY_price"`
+}
+
 // http://www.thetascan.io/api/contract/?contract=0x3da3d8cde7b12cd2cbb688e2655bcacd8946399d
 type Order struct {
 	ID                    primitive.ObjectID `bson:"_id,omitempty" json:"_id,omitempty" validate:"required"`
@@ -56,7 +61,7 @@ type Order struct {
 	To                    Contract           `bson:"to_contract,omitempty" json:"to_contract,omitempty"`
 	CreatedAt             time.Time          `bson:"created_at,omitempty" json:"created_at,omitempty"`
 	UpdatedAt             time.Time          `bson:"updated_at,omitempty" json:"updated_at,omitempty"`
-	Prices                theta.Price        `bson:"prices,omitempty" json:"prices,omitempty"`
+	Prices                Price              `bson:"prices,omitempty" json:"prices,omitempty"`
 	EthGasPriceInUSD      float64            `bson:"eth_gas_price_usd,omitempty" json:"eth_gas_price_usd,omitempty"`
 	EthGasPriceInReplay   float64            `bson:"eth_gas_price_in_replay_token,omitempty" json:"eth_gas_price_in_replay_token,omitempty"`
 	TotalOrderAmount      float64            `bson:"total_order_amount,omitempty" json:"total_order_amount,omitempty"`
