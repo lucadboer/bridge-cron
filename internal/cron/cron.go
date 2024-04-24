@@ -20,6 +20,8 @@ func ProcessOrder(order model.Order) {
 
 	deadline := time.Now().Add(1 * time.Hour)
 
+	fmt.Printf("Cronjob started to wallet: %s", order.CustomerWalletAddress)
+
 	for time.Now().Before(deadline) {
 		if theta.CheckWalletChange(order.CustomerWalletAddress) {
 			err := wsClient.SendMessage("checkWallet", order)
@@ -31,6 +33,8 @@ func ProcessOrder(order model.Order) {
 		}
 		time.Sleep(30 * time.Second)
 	}
+
+	fmt.Println("Cronjob timed out")
 
 	err := wsClient.SendMessage("checkWallet", map[string]string{"error": "Check wallet timeout"})
 
