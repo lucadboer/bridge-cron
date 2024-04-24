@@ -32,7 +32,10 @@ func ProcessOrder(order model.Order) {
 		time.Sleep(30 * time.Second)
 	}
 
-	wsClient.SendMessage("checkWallet", map[string]string{"error": "Check wallet timeout"})
-}
+	err := wsClient.SendMessage("checkWallet", map[string]string{"error": "Check wallet timeout"})
 
-// todo fix when check wallet timeout
+	if err != nil {
+		fmt.Println("Failed to send JSON via WebSocket when timeout: ", err)
+		return
+	}
+}
