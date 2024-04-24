@@ -17,9 +17,9 @@ func CheckWalletChange(walletAddress string) bool {
 		fmt.Println("error fetching balance:", err)
 		return false
 	}
-	defer resp.Body.Close()
 
 	body, err := io.ReadAll(resp.Body)
+
 	if err != nil {
 		fmt.Println("error reading response body:", err)
 		return false
@@ -35,7 +35,7 @@ func CheckWalletChange(walletAddress string) bool {
 
 	currentBalance, ok := result["balance"].(string)
 	if !ok {
-		fmt.Println("balance not found or is not a string", result)
+		fmt.Println("Balance not found: ", result)
 		return false
 	}
 
